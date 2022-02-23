@@ -54,6 +54,20 @@ section {
   padding: 2rem 9%;
 }
 
+.btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: .7rem 1.8rem;
+  cursor: pointer;
+  color: $white;
+  background: $green;
+  border-radius: .5rem;
+
+  &:hover {
+    background: $black;
+  }
+}
+
 .header {
   position: sticky;
   top: 0;
@@ -125,6 +139,7 @@ section {
   top: 8.5rem; left: 0; right: 0;
   height: calc(100vh - 8.5rem);
   background: $white;
+  z-index: 1000;
   display: none;
 
   &.active {
@@ -156,6 +171,179 @@ section {
 
       &:hover {
         color: $green;
+      }
+    }
+  }
+}
+
+.shopping-cart-container {
+  position: fixed;
+  top: 8.5rem; left: 0; right: 0;
+  height: calc(100vh - 8.5rem);
+  background: $white;
+  overflow-y: scroll;
+  padding-bottom: 8rem;
+  z-index: 1000;
+  display: none;
+
+  &.active{
+    display: block;
+  }
+
+
+  &::-webkit-scrollbar{
+    width: 1rem;
+  }
+  &::-webkit-scrollbar-track{
+    background: $white;
+  }
+  &::-webkit-scrollbar-thumb{
+    background: $black;
+    border-radius: 5rem;
+  }
+
+  .title {
+    font-size: 2.5rem;
+    padding: 1rem;
+    color: $black;
+    border-bottom: $border;
+    text-align: center;
+  }
+
+  .products-container{
+    border: $border;
+    border-radius: .5rem;
+    animation: fadeUp .4s linear;
+
+    .box-container {
+      @include grid(30rem);
+      padding: 1.5rem;
+
+      .box {
+        border-radius: .5rem;
+        background: $light-bg;
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        padding: 2rem;
+        position: relative;
+
+        .fa-times {
+          position: absolute;
+          top: .7rem; right: 1rem;
+          font-size: 2rem;
+          cursor: pointer;
+          color: $black;
+
+          &:hover {
+            color: $green;
+          }
+        }
+      }
+
+      img {
+        height: 8rem;
+      }
+
+      .content{
+        h3 {
+          font-size: 2rem;
+          color: $black;
+        }
+
+        span {
+          font-size: 1.5rem;
+          color: $light-color;
+
+          &.price {
+            color: $green;
+            font-size: 1.7rem;
+          }
+        }
+
+        input {
+          width: 8rem;
+          padding: .5rem 1.2rem;
+          font-size: 1.5rem;
+          color: $black;
+          margin: .7rem 0;
+        }
+      }
+    }
+  }
+
+  .cart-total {
+    margin-top: 2rem;
+    border: $border;
+    border-radius: .5rem;
+    animation: fadeUp .4s linear .4s backwards;
+
+    .box {
+      padding: 1.5rem;
+
+      h3 {
+        color: $black;
+        font-size: 2rem;
+        padding-bottom: .7rem;
+
+        span {
+          color: $green;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// media queries
+
+@media (max-width:991px) {
+  html {
+    font-size: 55%;
+  }
+
+  .header {
+    padding: 2rem;
+  }
+
+  section {
+    padding: 2rem;
+  }
+}
+
+@media (max-width:450px) {
+  html {
+    font-size: 50%;
+  }
+
+  .shopping-cart-container .cart-total {
+    .box {
+      text-align: center;
+
+      .btn {
+        width: 100%;
       }
     }
   }
